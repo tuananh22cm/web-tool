@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Status, { IMeta } from "../../components/Status/Status";
 import { renderColorStatus } from "../../utils/renderColorStatusCode";
+import CheckStatus from "../../components/CheckIndex/CheckStatus";
 export interface IData {
     url: string;
     statusCode: number;
@@ -17,7 +18,7 @@ export interface IData {
       axios
         .get(apiUrl)
         .then((response) => {
-            console.log(response.data[0].metaData);
+            console.log(response.data);
           setListData(response.data);
         })
         .catch((error) => {
@@ -27,14 +28,17 @@ export interface IData {
   return (
     <div>
         <div className="container">
-      <h2 style={{ textAlign: "center" }}>Check Status Index From Google Console </h2>
+      <h2 style={{ textAlign: "center" }}>Check Status Index From Google Console </h2> <CheckStatus/>
       <table className="table">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">CompanyName</th>
             <th scope="col">url index</th>
-            <th scope="col">status code</th>
+            <th scope="col"> code</th>
+            <th scope="col">title</th>
+            <th scope="col">description</th>
+            <th scope="col">screenshot</th>
             <th scope="col">action</th>
           </tr>
         </thead>
@@ -46,6 +50,11 @@ export interface IData {
                 <td>draphony.de</td>
                 <td>{url}</td>
                 <td >{statusCode}</td>
+                <td >{pageTitle}</td>
+                <td >{metaDescription}</td>
+                {screenshot && (
+                <img style={{width:'100px'}} className="img-detail" src={`data:image/png;base64,${screenshot}`} />
+                )}
                 <td>
                   <Status metaData={metaData} metaDescription={metaDescription} url={url} img={screenshot} pageTitle={pageTitle}/>
                 </td>
