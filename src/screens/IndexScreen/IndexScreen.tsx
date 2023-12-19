@@ -9,6 +9,7 @@ export interface IData {
     pageTitle:string;
     screenshot:string;
     metaDescription:string;
+    beRedirect:string[];
     metaData:Array<IMeta>;
   }
   const IndexScreen = () => {
@@ -18,7 +19,6 @@ export interface IData {
       axios
         .get(apiUrl)
         .then((response) => {
-            console.log(response.data);
           setListData(response.data);
         })
         .catch((error) => {
@@ -36,6 +36,7 @@ export interface IData {
             <th scope="col">CompanyName</th>
             <th scope="col">url index</th>
             <th scope="col"> code</th>
+            <th scope="col">be redirect</th>
             <th scope="col">title</th>
             <th scope="col">description</th>
             <th scope="col">screenshot</th>
@@ -43,13 +44,14 @@ export interface IData {
           </tr>
         </thead>
         <tbody>
-          {listData.map(({url,statusCode,screenshot,metaData,metaDescription,pageTitle},index) => {
+          {listData.map(({url,statusCode,screenshot,metaData,metaDescription,beRedirect,pageTitle},index) => {
             return (
               <tr className={`table-${renderColorStatus(statusCode)}`}>
                 <th scope="row">{index+1}</th>
                 <td>draphony.de</td>
                 <td>{url}</td>
                 <td >{statusCode}</td>
+                <td >{beRedirect.map(item=><p>{item}</p>)}</td>
                 <td >{pageTitle}</td>
                 <td >{metaDescription}</td>
                 {screenshot && (
@@ -61,7 +63,6 @@ export interface IData {
               </tr>
             );
           })}
-
         </tbody>
       </table>
     </div>
