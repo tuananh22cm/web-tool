@@ -8,6 +8,7 @@ import Button from "react-bootstrap/esm/Button";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 
+import CheckStatus from "../../components/CheckIndex/CheckStatus";
 export interface IData {
     url: string;
     statusCode: number;
@@ -23,7 +24,7 @@ export interface IData {
       axios
         .get(apiUrl)
         .then((response) => {
-            console.log(response.data[0].metaData);
+            console.log(response.data);
           setListData(response.data);
         })
         .catch((error) => {
@@ -35,7 +36,7 @@ export interface IData {
   return (
     <div>
         <div className="container">
-      <h2 style={{ textAlign: "center" }}>Check Status Index From Google Console </h2>
+      <h2 style={{ textAlign: "center" }}>Check Status Index From Google Console </h2> <CheckStatus/>
       <DatePicker
       showIcon
       selected={startDate}
@@ -46,23 +47,8 @@ export interface IData {
       selected={startDate}
       onChange={(date) => setStartDate(date)}
     /><br></br>
-      {/* <DatePicker selected={startDate}    onChange={(date: Date | null) => setStartDate(date)} />
-      <DatePicker selected={startDate}    onChange={(date: Date | null) => setStartDate(date)} />
-      <DatePicker selected={startDate}    onChange={(date: Date | null) => setStartDate(date)} /><br></br> */}
       <input type="text" placeholder="enter here" ></input>
       <Button variant="primary">Search</Button><br></br>
-      {/* <Dropdown>
-      <Dropdown.Toggle variant="danger" id="dropdown-basic">
-       By code
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">200</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">301</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">302</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">404</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown> */}
      <label>by code</label>
 
 <select id="cars">
@@ -80,7 +66,10 @@ export interface IData {
             <th scope="col">#</th>
             <th scope="col">CompanyName</th>
             <th scope="col">url index</th>
-            <th scope="col">status code</th>
+            <th scope="col"> code</th>
+            <th scope="col">title</th>
+            <th scope="col">description</th>
+            <th scope="col">screenshot</th>
             <th scope="col">action</th>
           </tr>
         </thead>
@@ -92,6 +81,11 @@ export interface IData {
                 <td>draphony.de</td>
                 <td>{url}</td>
                 <td >{statusCode}</td>
+                <td >{pageTitle}</td>
+                <td >{metaDescription}</td>
+                {screenshot && (
+                <img style={{width:'100px'}} className="img-detail" src={`data:image/png;base64,${screenshot}`} />
+                )}
                 <td>
                   <Status metaData={metaData} metaDescription={metaDescription} url={url} img={screenshot} pageTitle={pageTitle}/>
                 </td>
