@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Status, { IMeta } from "../../components/Status/Status";
 import { renderColorStatus } from "../../utils/renderColorStatusCode";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Button from "react-bootstrap/esm/Button";
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
 export interface IData {
     url: string;
     statusCode: number;
@@ -24,10 +30,50 @@ export interface IData {
           console.error("error when fetching data : " + error);
         });
     }, []);
+
+    const [startDate, setStartDate] = useState<Date | null>(new Date());
   return (
     <div>
         <div className="container">
       <h2 style={{ textAlign: "center" }}>Check Status Index From Google Console </h2>
+      <DatePicker
+      showIcon
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+    />
+    <DatePicker
+      showIcon
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+    /><br></br>
+      {/* <DatePicker selected={startDate}    onChange={(date: Date | null) => setStartDate(date)} />
+      <DatePicker selected={startDate}    onChange={(date: Date | null) => setStartDate(date)} />
+      <DatePicker selected={startDate}    onChange={(date: Date | null) => setStartDate(date)} /><br></br> */}
+      <input type="text" placeholder="enter here" ></input>
+      <Button variant="primary">Search</Button><br></br>
+      {/* <Dropdown>
+      <Dropdown.Toggle variant="danger" id="dropdown-basic">
+       By code
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">200</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">301</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">302</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">404</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown> */}
+     <label>by code</label>
+
+<select id="cars">
+  <option value="200">200</option>
+  <option value="301">301</option>
+  <option value="302">302</option>
+  <option value="404">404</option>
+</select>
+
+
+
       <table className="table">
         <thead>
           <tr>

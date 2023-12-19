@@ -5,12 +5,9 @@ const Layout = () => {
     <>
       <nav>
         <ul>
-          <li>
-            <Link to="/index">index1</Link>
-          </li>
-          <li>
-            <Link to="/index2">index2</Link>
-          </li>
+          {/* <li>
+            <Link to="/index">index</Link>
+          </li> */}
           <li>
             <Link to="/home">home</Link>
           </li>
