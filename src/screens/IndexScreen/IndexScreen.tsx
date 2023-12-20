@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Status, { IMeta } from "../../components/Status/Status";
 import { renderColorStatus } from "../../utils/renderColorStatusCode";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Button from "react-bootstrap/esm/Button";
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
 import CheckStatus from "../../components/CheckIndex/CheckStatus";
 export interface IData {
     url: string;
@@ -9,6 +15,7 @@ export interface IData {
     pageTitle:string;
     screenshot:string;
     metaDescription:string;
+    beRedirect:string[];
     metaData:Array<IMeta>;
   }
   const IndexScreen = () => {
@@ -18,17 +25,41 @@ export interface IData {
       axios
         .get(apiUrl)
         .then((response) => {
-            console.log(response.data);
           setListData(response.data);
         })
         .catch((error) => {
           console.error("error when fetching data : " + error);
         });
     }, []);
+
+    const [startDate, setStartDate] = useState<Date | null>(new Date());
   return (
     <div>
         <div className="container">
       <h2 style={{ textAlign: "center" }}>Check Status Index From Google Console </h2> <CheckStatus/>
+      <DatePicker
+      showIcon
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+    />
+    <DatePicker
+      showIcon
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+    /><br></br>
+      <input type="text" placeholder="enter here" ></input>
+      <Button variant="primary">Search</Button><br></br>
+     <label>by code</label>
+
+<select id="cars">
+  <option value="200">200</option>
+  <option value="301">301</option>
+  <option value="302">302</option>
+  <option value="404">404</option>
+</select>
+
+
+
       <table className="table">
         <thead>
           <tr>
@@ -36,6 +67,7 @@ export interface IData {
             <th scope="col">CompanyName</th>
             <th scope="col">url index</th>
             <th scope="col"> code</th>
+            <th scope="col">be redirect</th>
             <th scope="col">title</th>
             <th scope="col">description</th>
             <th scope="col">screenshot</th>
@@ -43,13 +75,14 @@ export interface IData {
           </tr>
         </thead>
         <tbody>
-          {listData.map(({url,statusCode,screenshot,metaData,metaDescription,pageTitle},index) => {
+          {listData.map(({url,statusCode,screenshot,metaData,metaDescription,beRedirect,pageTitle},index) => {
             return (
               <tr className={`table-${renderColorStatus(statusCode)}`}>
                 <th scope="row">{index+1}</th>
                 <td>draphony.de</td>
                 <td>{url}</td>
                 <td >{statusCode}</td>
+                <td >{beRedirect.map(item=><p>{item}</p>)}</td>
                 <td >{pageTitle}</td>
                 <td >{metaDescription}</td>
                 {screenshot && (
@@ -61,7 +94,6 @@ export interface IData {
               </tr>
             );
           })}
-
         </tbody>
       </table>
     </div>
