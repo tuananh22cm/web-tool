@@ -1,0 +1,50 @@
+parameters:
+  - name: sshServCon
+    values: ["zeroti.germanywestcentral.cloudapp.azure.com"]
+    default: "zeroti.germanywestcentral.cloudapp.azure.com"
+
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - develop
+
+resources:
+  repositories:
+  - repository: lib-azdevops
+    type: git
+    name: Draphony-Library/lib-azdevops
+    ref: refs/heads/master
+    endpoint: DraphonyOperation
+
+pool:
+  name: draphony-managed-agents
+
+jobs:
+  - job: BuildApp
+    displayName: Build and Publish as artifact
+    steps:
+      - template: node-build/node-build-v3.yml@lib-azdevops
+        parameters:
+          disableCaching: true
+          nodeVersion: 17.x
+          disableUnitTests: false # Optional, as false is the default value
+          disableLinting: false # Optional, as false is the default value
+
+  # Splitting in 2 jobs, so that we can redeploy without build in case deployment failed.
+  - job: DeployApp
+    displayName: Deploy artifact to dev-environment
+    dependsOn: ["BuildApp"]
+    steps:
+      - checkout: none
+      - download: current
+        artifact: BuildApp
+      - task: CopyFilesOverSSH@0
+        inputs:
+          sshEndpoint: ${{ parameters.sshServCon }}
+          sourceFolder: $(Pipeline.Workspace)/BuildApp
+          contents: "**"
+          targetFolder: "/var/www/html"
+          cleanTargetFolder: true
+          readyTimeout: "20000"
