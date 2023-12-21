@@ -1,24 +1,33 @@
+import Axios from "axios";
+import React from "react";
+import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./AppRoutes";
+import { AppState } from "./appState/AppState";
+import { reducer } from "./appState/reducer";
+import { AppContext } from "./containers/AppContext";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import IndexScreen from "./screens/IndexScreen/IndexScreen";
-import Layout from "./screens/Layout/Layout";
-import Home from "./screens/Home/Home";
-import Logs from "./screens/Logs/Logs";
+declare const SERVER_API_URI: string;
+const baseURL = SERVER_API_URI ?? "http://localhost:3000/";
 
+interface IProps {
+    baseURL: string;
+    initialState: AppState;
+}
 
-const App = () => {
+export const App = (props: IProps): JSX.Element => {
+    Axios.defaults.baseURL = props.baseURL ?? "http://localhost:3000/";
+    const [appState, dispatch] = React.useReducer(reducer, props.initialState);
 
-  return (
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/index" element={<IndexScreen />}></Route>
-        <Route path="/home" element={<Home/>}/>
-        </Route>
-        
-    </Routes>
-  </BrowserRouter>
-  );
+    return (
+        <React.StrictMode>
+            <BrowserRouter>
+                <AppContext.Provider value={{ appState, dispatch }}>
+                    <AppRoutes />
+                </AppContext.Provider>
+            </BrowserRouter>
+        </React.StrictMode>
+    );
 };
 
-export default App;
+render(<App baseURL={baseURL} initialState={new AppState()} />, document.getElementById("app"));
