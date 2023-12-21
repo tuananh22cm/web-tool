@@ -28,7 +28,7 @@ jobs:
       - template: node-build/node-build-v3.yml@lib-azdevops
         parameters:
           disableCaching: true
-          nodeVersion: 17.x
+          nodeVersion: 18.x
           disableUnitTests: false # Optional, as false is the default value
           disableLinting: false # Optional, as false is the default value
 
