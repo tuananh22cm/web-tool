@@ -10,18 +10,18 @@ export const renderColorStatus = (statusCode:number)=>{
             color="success";
             break;    
         case "3":
-            color="warning"
+            color="warning";
             break;
         case "4":
-            color="danger"
+            color="danger";
             break;
     
         case "5":
-            color="danger"
+            color="danger";
             break;
     
         default:
             break;
     }
     return color;
-}
+};

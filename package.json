@@ -3,10 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "start": "webpack serve --config ./webpack.config.js --mode development"
+        "build:dev": "webpack --mode development",
+        "build:qa": "webpack --mode staging",
+        "build:prod": "webpack --mode production",
+        "lint": "eslint ./src/**/*.{js,ts,tsx} --fix",
+        "lint:ci": "eslint ./src/**/*.{js,ts,tsx}",
+        "start": "webpack serve --config ./webpack.config.js --mode development",
+        "test": "npm run lint & jest",
+        "test:ci": "jest --ci --coverage --verbose"
     },
     "browserslist": {
         "production": [

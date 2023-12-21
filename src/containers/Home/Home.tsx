@@ -8,7 +8,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-let a: any = null;
 function Home() {
     const [progressValue, setProgressValue] = useState(0);
     const [totalValue, setTotalValue] = useState(0);

@@ -13,9 +13,9 @@ const CheckStatus: React.FC<any> = ({}) => {
   const [inputFields, setInputFields] = useState([{ value: "" }]);
   const [listData, setListData] = useState<IData[]>([]);
   const handleSendMail = async ()=>{
-    console.log("listData"+listData)
-     axios.post("http://localhost:3000/linkindex/mail",listData).then(data => console.log("send mail successfully"))
-  }
+    console.log("listData"+listData);
+     axios.post("http://localhost:3000/linkindex/mail",listData).then(data => console.log("send mail successfully"));
+  };
   const handleChange = (
     index: number,
     event: React.ChangeEvent<HTMLInputElement>

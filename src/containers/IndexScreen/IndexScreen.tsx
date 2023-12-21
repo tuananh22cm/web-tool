@@ -7,7 +7,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from "react-bootstrap/esm/Button";
 import Dropdown from 'react-bootstrap/Dropdown';
 
-
 import CheckStatus from "../../components/CheckIndex/CheckStatus";
 export interface IData {
     url: string;
@@ -58,8 +57,6 @@ export interface IData {
   <option value="404">404</option>
 </select>
 
-
-
       <table className="table">
         <thead>
           <tr>
@@ -98,7 +95,7 @@ export interface IData {
       </table>
     </div>
     </div>
-  )
-}
+  );
+};
 
 export default IndexScreen;

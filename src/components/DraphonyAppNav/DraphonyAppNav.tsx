@@ -24,32 +24,32 @@ import { ClientRoutes, ServerRouters } from "../../Routes";
 import { makeStyles } from "@mui/styles";
 
 export interface DraphonyAppNavPath {
-    title: string;
-    path: string;
-    to: MouseEventHandler<HTMLButtonElement>;
+    title: string
+    path: string
+    to: MouseEventHandler<HTMLButtonElement>
 
     /** addition path, that will mark this item as current. Useful when parent of subItems */
-    additional?: Array<string>;
+    additional?: Array<string>
 }
 
 export interface DraphonyAppNavProps {
-    items: Array<DraphonyAppNavPath>;
+    items: Array<DraphonyAppNavPath>
 
     /** Logo left to the app-bar */
-    logo?: string | JSX.Element;
+    logo?: string | JSX.Element
 
     /** Current location (pathname). No item is marked as current if omitted. */
-    location?: string;
+    location?: string
 
     /** Specify a secondary app-bar below app-bar. Used the path of items as key. */
     subItems?: {
-        [path: string]: Array<DraphonyAppNavPath>;
-    };
+        [path: string]: Array<DraphonyAppNavPath>
+    }
 
-    onLogout: () => void;
+    onLogout: () => void
 
-    currentUser?: any;
-    history?: any;
+    currentUser?: any
+    history?: any
 }
 
 const DraphonyAppNavButton = styled(Button)({
@@ -114,12 +114,10 @@ export const DraphonyAppNav = (props: DraphonyAppNavProps): JSX.Element => {
                                 <Box pr={2} display="inline-block">
                                     {x.path === props.location ||
                                     x?.additional?.find((q) => props.location && props.location.indexOf(q.split("/")[1]) !== -1) ? (
-                                        // eslint-disable-next-line no-inline-styles/no-inline-styles
                                         <DraphonyAppNavButton className={classes.labelButton} onClick={x.to} disabled style={disabledStyle}>
                                             {x.title}
                                         </DraphonyAppNavButton>
                                     ) : (
-                                        // eslint-disable-next-line no-inline-styles/no-inline-styles
                                         <DraphonyAppNavButton className={classes.labelButton} onClick={x.to} style={activeStyle}>
                                             {x.title}
                                         </DraphonyAppNavButton>
