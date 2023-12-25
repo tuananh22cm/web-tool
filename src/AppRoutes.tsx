@@ -1,13 +1,16 @@
-import axios from "axios";
+ 
 import React from "react";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { ClientRoutes } from "./Routes";
 import { DraphonyAppNav, DraphonyAppNavPath } from "./components/DraphonyAppNav/DraphonyAppNav";
 import { IPageProps, connectContainer } from "./containers/ContainerBase";
 import { CurrentUserActionType } from "./appState/currentUser/CurrentUserAction";
-import Home from "./containers/Home/Home";
 import { DraphonyAppFooter } from "./components/DraphonyAppFooter/DraphonyAppFooter";
 import IndexScreen from "./containers/IndexScreen/IndexScreen";
+import MailScreen from "./containers/MailScreen/MailScreen";
+import LogsScreen from "./containers/LogsScreen/LogsScreen";
+import QueueScreen from "./containers/QueueScreen/QueueScreen";
+import HomeScreen from "./containers/HomeScreen/HomeScreen";
 
 declare const BUILD_VERSION: string;
 declare const BUILD_DATETIMESTAMP: string;
@@ -21,6 +24,10 @@ class AppRoutesRaw extends React.Component<IPageProps, IState> {
         const items: Array<DraphonyAppNavPath> = [
             { title: "Home", path: ClientRoutes.home, additional: [ClientRoutes.home] },
             { title: "Index", path: ClientRoutes.index, additional: [ClientRoutes.index] },
+            { title: "Mail", path: ClientRoutes.mail, additional: [ClientRoutes.mail] },
+            { title: "Queue", path: ClientRoutes.queue, additional: [ClientRoutes.queue] },
+            { title: "Setting", path: ClientRoutes.setting, additional: [ClientRoutes.setting] },
+            { title: "Logs", path: ClientRoutes.log, additional: [ClientRoutes.log] },
         ].map((x) => ({
             ...x,
             to: () => this.props.history.push(x.path),
@@ -53,12 +60,16 @@ class AppRoutesRaw extends React.Component<IPageProps, IState> {
                     />
                 )}
                 <Switch>
-                    <Route exact path={ClientRoutes.home} component={Home} />
+                    <Route exact path={ClientRoutes.home} component={HomeScreen} />
                     <Route exact path={ClientRoutes.index} component={IndexScreen} />
+                    <Route exact path={ClientRoutes.mail} component={MailScreen} />
+                    <Route exact path={ClientRoutes.log} component={LogsScreen} />
+                    <Route exact path={ClientRoutes.queue} component={QueueScreen} />
+                    <Route exact path={ClientRoutes.setting} component={QueueScreen} />
                     <Redirect exact from={ClientRoutes.home} to={ClientRoutes.home} />
                 </Switch>
 
-                {disabledAppNav ? null : <DraphonyAppFooter appName="PreCare" build={BUILD_VERSION} date={BUILD_DATETIMESTAMP} />}
+                {disabledAppNav ? null : <DraphonyAppFooter appName="zeroti" build={BUILD_VERSION} date={BUILD_DATETIMESTAMP} />}
             </Router>
         );
     }

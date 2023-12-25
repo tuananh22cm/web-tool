@@ -1,6 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import { Container } from "react-bootstrap";
 
 export interface IDraphonyAppFooterProps {
     appName: string;

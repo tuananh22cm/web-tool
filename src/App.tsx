@@ -6,7 +6,10 @@ import { AppRoutes } from "./AppRoutes";
 import { AppState } from "./appState/AppState";
 import { reducer } from "./appState/reducer";
 import { AppContext } from "./containers/AppContext";
-
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 declare const SERVER_API_URI: string;
 const baseURL = SERVER_API_URI ?? "http://localhost:3000/";
 

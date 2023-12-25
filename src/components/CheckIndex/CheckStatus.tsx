@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 interface IData {
   indexProvided: string;
   indexRedirect: string;
@@ -54,9 +58,7 @@ const CheckStatus: React.FC<any> = ({}) => {
   };
   return (
     <>
-      <Button variant="warning" onClick={handleShow}>
-        Check url
-      </Button>
+      {/* <Button variant="contained" onClick={handleShow}>Check url</Button>
 
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -120,7 +122,7 @@ const CheckStatus: React.FC<any> = ({}) => {
             </Button>
           </div>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

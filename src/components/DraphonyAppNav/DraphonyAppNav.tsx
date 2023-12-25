@@ -2,25 +2,19 @@ import {
     styled,
     Box,
     Grid,
-    IconButton,
-    Typography,
-    List,
-    ButtonBase,
-    ListItem,
-    ListItemAvatar,
     Avatar,
-    ListItemText,
     Popper,
     ClickAwayListener,
     Paper,
     MenuList,
     MenuItem,
+    Button,
+    Container,
 } from "@mui/material";
 import axios from "axios";
 import React from "react";
-import { MouseEventHandler, useEffect, useState } from "react";
-import { Button, Container, Badge, Popover } from "react-bootstrap";
-import { ClientRoutes, ServerRouters } from "../../Routes";
+import { MouseEventHandler } from "react";
+import { ServerRouters } from "../../Routes";
 import { makeStyles } from "@mui/styles";
 
 export interface DraphonyAppNavPath {
@@ -104,9 +98,9 @@ export const DraphonyAppNav = (props: DraphonyAppNavProps): JSX.Element => {
                 borderBottom="1px solid rgba(0, 0, 0, 0.1)"
                 position="relative"
             >
-                <Box display="flex" position="absolute" left={0} top={0} height="100%" alignItems="center" pl={1}>
-                    <img src="/assets/PreCare-logo.svg" />
-                </Box>
+                {/* <Box display="flex" position="absolute" left={0} top={0} height="100%" alignItems="center" pl={1}>
+                    <img width={"100px"} src="/assets/draphony-logo.jpg" />
+                </Box> */}
                 <Container>
                     <Grid container>
                         {props.items.map((x, index) => (
@@ -122,14 +116,15 @@ export const DraphonyAppNav = (props: DraphonyAppNavProps): JSX.Element => {
                                             {x.title}
                                         </DraphonyAppNavButton>
                                     )}
+                                    
                                 </Box>
                             </Grid>
                         ))}
                     </Grid>
                 </Container>
                 <Box>
-                    <Box style={{ marginLeft: "12px" }}>
-                        <Avatar>AH</Avatar>
+                    <Box display="flex" flexDirection="row" style={{ marginLeft: "12px"}}>
+                        {/* <Avatar>AH</Avatar> */}
                         <Popper open={open} anchorEl={anchorEl}>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <Box component={Paper}>

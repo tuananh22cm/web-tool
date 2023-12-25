@@ -1,0 +1,89 @@
+[33mcommit d1a8576d0c96d7e2d8895373ea0709a7a38f5034[m[33m ([m[1;36mHEAD -> [m[1;32mfeatures/8335[m[33m, [m[1;31morigin/features/8335[m[33m)[m
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Thu Dec 21 14:20:34 2023 +0700
+
+    #8855 add layout for screen
+
+[33mcommit e7865881b330237f6e5f2eb29a5de8fd90d544c0[m
+Merge: b0727a7 fc81f42
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Tue Dec 19 16:42:09 2023 +0700
+
+    Merge branch 'develop' into features/8335
+
+[33mcommit fc81f42905def34bcb86c123ef5b562edf5dc7ad[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Tue Dec 19 16:42:00 2023 +0700
+
+    #8376 add column field beredirect
+
+[33mcommit b0727a77d701ca1ba3e725f181467178bab4f6a1[m
+Merge: 0e22e0b 55a5afa
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Tue Dec 19 16:39:40 2023 +0700
+
+    #8376 fix navigation bar
+
+[33mcommit 0e22e0b9d2394de1a3ac904c57be5b0c58f7e683[m
+Author: dac.tien.nguyen <dac.tien.nguye@draphony.comn>
+Date:   Tue Dec 19 16:27:40 2023 +0700
+
+    #8797 add chart home page
+
+[33mcommit 55a5afacff23475a9b242ce9008e3243b53847d3[m
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Mon Dec 18 17:51:00 2023 +0700
+
+    #8376 fix mail screen
+
+[33mcommit 9597912d2e83f34c67ef34b48d4757f4b5327d75[m
+Author: dac.tien.nguyen <dac.tien.nguye@draphony.comn>
+Date:   Mon Dec 18 17:35:33 2023 +0700
+
+    #8390 add home fe
+
+[33mcommit ff7dfbafd49c7effc873e63186cf7bdaa27fd7c2[m
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Mon Dec 18 11:17:27 2023 +0700
+
+    #8376 fix screen 2
+
+[33mcommit cfb336c13af7987b6a29fcf42813bec964e28e91[m
+Merge: c763c49 22e5674
+Author: Đắc Tiến Nguyễn <dac.tien.nguyen@draphony.com>
+Date:   Thu Dec 14 03:00:48 2023 +0000
+
+    Merged PR 679: #8696 add form show status
+    
+    #8696 add form show status
+    
+    Related work items: #8696
+
+[33mcommit 22e5674a05db519e0577bdb783f8451402e2423a[m
+Author: dac.tien.nguyen <dac.tien.nguye@draphony.comn>
+Date:   Wed Dec 13 22:14:20 2023 +0700
+
+    #8696 add form show status
+
+[33mcommit c763c4911938d751fe071280d87d8b5068334ae6[m
+Merge: 9cc13e0 6b9ab2f
+Author: Đắc Tiến Nguyễn <dac.tien.nguyen@draphony.com>
+Date:   Tue Dec 5 14:10:41 2023 +0000
+
+    Merged PR 604: #8560 add form to config message
+    
+    #8560 add form to config message
+    
+    Related work items: #8560
+
+[33mcommit 6b9ab2fd7a91459f29411633008b8dbd71381c69[m
+Author: dac.tien.nguyen <dac.tien.nguye@draphony.comn>
+Date:   Mon Dec 4 16:24:50 2023 +0700
+
+    #8560 add form to config message
+
+[33mcommit 9cc13e0fba622537b47e8d3f8234d9635b1aff1d[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Tran Tuan Anh <tuan.anh.tran@draphony.com>
+Date:   Tue Nov 14 10:30:43 2023 +0700
+
+    Initialize project using Create React App
