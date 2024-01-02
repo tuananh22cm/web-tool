@@ -3,21 +3,21 @@ export const renderColorStatus = (statusCode:number)=>{
     const input= (statusCode+"")[0];
     switch (input) {
         case "1":
-            color="secondary";
+            color="#f1f8e9";
             break;
     
         case "2":
-            color="success";
+            color="#aed581";
             break;    
         case "3":
-            color="warning";
+            color="#dce775";
             break;
         case "4":
-            color="danger";
+            color="#ef5350";
             break;
     
         case "5":
-            color="danger";
+            color="#ffc107";
             break;
     
         default:
