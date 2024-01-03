@@ -1,11 +1,12 @@
 export class ClientRoutes {
     static login = "/login";
     static home = "/";
-    static index = "/index";
-    static mail ="/mail";
-    static queue = "/queue";
-    static log = "/log";
-    static setting = "/setting"
+    static account = "/account";
+    static scroll ="/scroll";
+    static seeding = "/seeding";
+    static link = "/link";
+    static react = "/react";
+    static mail = "/mail"
 }
 
 export class ServerRouters {
